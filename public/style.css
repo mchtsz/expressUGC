@@ -111,3 +111,56 @@ nav {
   margin: 0;
   font-size: 18px;
 }
+
+/* Styles for the modal overlay */
+.user-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+}
+
+/* Styles for the modal content */
+.user-modal-content {
+  background: #fff;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  position: relative;
+}
+
+.user-modal-content img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.user-modal-content h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.user-modal-content p {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+}
+
+/* Close button for the modal */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
