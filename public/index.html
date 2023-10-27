@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+</head>
+<body>
+    <header>
+        <h1>User api</h1>
+    </header>
+    <nav>
+        <div class="user-card" id="user"></div>
+    </nav>
+    <section>
+        <div class="container">
+        </div>
+    </section>
+</body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+    body, * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Lato', sans-serif;
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        font-weight: 500;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 400;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+        font-weight: 400;
+    }
+
+    p {
+        font-size: 1rem;
+        font-weight: 400;
+    }
+
+    header {
+        width: 100%;
+        text-align: center;
+        background-color: #777;
+        color: #fff;
+        padding: 1rem;
+    }
+
+    nav {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .user-card {
+        width: 1200px;
+        height: 100%;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 2rem;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .user-cardv2 {
+        text-align: center;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 2rem;
+        height: 100%;
+        width: 1200px;
+    }
+
+    .user-card img {
+        width: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+    .user-card .user-info {
+        margin-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .container {
+        margin-top: 1rem;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .5rem;
+        flex-direction: column;
+    }
+
+    .container p {
+        margin: 0;
+        font-size: 18px;
+    }
+</style>
+
+<script defer>
+    const userCard = document.getElementById("user")
+
+    async function getUsers() {
+        let response = await fetch('/users?results=5');
+        let users = await response.json();
+        console.log(users);
+        const userContainer = document.querySelector(".container")
+
+        console.log(userCard)
+        userCard.innerHTML = `
+        <img src="${users[0].picture.large}" id="userImage">
+        <div class="user-info">
+            <h1>Brukerinfo</h1>
+            <h2>First name: ${users[0].name.first}</h2>
+            <h3>Last name: ${users[0].name.last}</h3>
+            <h4>Gender: ${users[0].gender}</h4>
+            <p>Email: ${users[0].email}</p>
+            <p>Username: ${users[0].login.username}</p>
+            <p>Password: ${users[0].login.password}</p>
+        </div> `
+
+        for (let user of users) {
+            userContainer.innerHTML += `
+            <div class="user-cardv2">
+            <p>Name: ${user.name.first}</p>  
+            <p>Last name: ${user.name.last}</p>  
+            <p>Username: ${user.login.username}</p>  
+            <p>User email: ${user.email}</p>  
+            <p>User cellphone: ${user.cell}</p>  
+            </div>
+            `
+        }
+    }
+
+    getUsers()
+</script>
+
+</html>
