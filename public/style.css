@@ -12,7 +12,7 @@ body {
 
 h1 {
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h2 {
@@ -91,10 +91,16 @@ nav {
 }
 
 .user-card .user-info {
-  margin-left: 20px;
   display: flex;
+  margin-left: 2rem;
   flex-direction: column;
+  justify-content: center;
   gap: 1rem;
+}
+
+.user-info hr {
+  width: 1000px;
+  margin: 0;
 }
 
 .container {

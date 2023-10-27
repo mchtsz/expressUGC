@@ -8,16 +8,17 @@ async function getUsers() {
 
   console.log(users);
 
-  const mainCard = document.getElementById("user"); // Define mainCard here
+  const mainCard = document.getElementById("user");
 
   mainCard.innerHTML = `
     <img src="${users[0].picture.large}" id="userImage">
     <div class="user-info">
       <h1>Brukerinfo</h1>
+      <hr>
       <h2>First name: ${users[0].name.first}</h2>
       <h3>Last name: ${users[0].name.last}</h3>
       <h4>Gender: ${users[0].gender}</h4>
-      <p>Email: ${users[0].email}</p>
+      <p>Mail: ${users[0].email}</p>
       <p>Username: ${users[0].login.username}</p>
       <p>Password: ${users[0].login.password}</p>
     </div>`;
@@ -51,7 +52,7 @@ function openPreview(user) {
   `;
 
   const modal = document.getElementById("user-modal");
-  modal.style.display = "flex"; // Use "flex" for centering
+  modal.style.display = "flex"; 
 
   window.addEventListener("click", (event) => {
     if (event.target === modal) {
